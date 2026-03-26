@@ -7,4 +7,4 @@ class Produto(Base):
     id = Column(Integer, primary_key=True, index=True)
     nome = Column(String(100))
     descricao = Column(String(255))
-    preco = Column(Float)
+    preco = Column(Float, nullable=False)
