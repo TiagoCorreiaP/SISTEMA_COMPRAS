@@ -8,4 +8,4 @@ class Pedido(Base):
     produto_id = Column(Integer, ForeignKey("produtos.id"))
     fornecedor_id = Column(Integer, ForeignKey("fornecedores.id"))
     quantidade = Column(Integer)
-    status = Column(String(50))
+    status = Column(String, default="criado")

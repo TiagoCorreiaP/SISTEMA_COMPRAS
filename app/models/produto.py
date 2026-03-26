@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, Float
 from app.models import Base
 
 class Produto(Base):
@@ -6,4 +6,5 @@ class Produto(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     nome = Column(String(100))
-    descricao = Column(String)
+    descricao = Column(String(255))
+    preco = Column(Float)
