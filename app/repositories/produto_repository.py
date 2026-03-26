@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 import app.models as models
 
-def criar_produto(db: Session, nome: str, descricao: str):
-    produto = models.Produto(nome=nome, descricao=descricao)
+def criar_produto(db: Session, nome: str, descricao: str, preco:float):
+    produto = models.Produto(nome=nome, descricao=descricao, preco=preco)
     db.add(produto)
     db.commit()
     db.refresh(produto)

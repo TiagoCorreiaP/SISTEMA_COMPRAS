@@ -1,4 +1,5 @@
 from app import models
+from sqlalchemy.orm import Session
 
 STATUS_PERMITIDOS = [
     "criado",
@@ -18,30 +19,14 @@ TRANSICOES = {
     "cancelado": []
 }
 
-def criar_pedido(db, produto_id, fornecedor_id, quantidade):
-    pedido = models.Pedido(
-        produto_id=produto_id,
-        fornecedor_id=fornecedor_id,
-        quantidade=quantidade,
-        status="criado"
-    )
+def criar_pedido(db: Session, pedido):
+    novo = models.Pedido(**pedido.dict())
 
-    db.add(pedido)
+    db.add(novo)
     db.commit()
-    db.refresh(pedido)
+    db.refresh(novo)
 
-    return pedido
+    return novo
 
-def criar_pedido(db, produto_id, fornecedor_id, quantidade):
-    pedido = models.Pedido(
-        produto_id=produto_id,
-        fornecedor_id=fornecedor_id,
-        quantidade=quantidade,
-        status="criado"
-    )
-
-    db.add(pedido)
-    db.commit()
-    db.refresh(pedido)
-
-    return pedido
+def listar_pedidos(db: Session):
+    return db.query(models.Pedido).all()

@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class ProdutoCreate(BaseModel):
     nome: str
@@ -9,7 +10,7 @@ class ProdutoResponse(BaseModel):
     id: int
     nome: str
     descricao: str
-    preco: float
+    preco: Optional[float]
 
     class Config:
         from_attributes = True

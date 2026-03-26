@@ -6,7 +6,9 @@ from app.routes import fornecedor, produto, pedido, usuario
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
+app = FastAPI(
+    title="Sistema de Compras"
+)
 
 app.include_router(fornecedor.router)
 app.include_router(produto.router)

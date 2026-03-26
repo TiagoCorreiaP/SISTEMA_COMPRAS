@@ -19,7 +19,8 @@ def criar(produto: ProdutoCreate, db: Session = Depends(get_db)):
         return produto_service.criar_produto(
             db,
             produto.nome,
-            produto.descricao
+            produto.descricao,
+            produto.preco
         )
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))

@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from app.models import Base
+from sqlalchemy.orm import relationship
 
 class Pedido(Base):
     __tablename__ = "pedidos"
@@ -9,3 +10,7 @@ class Pedido(Base):
     fornecedor_id = Column(Integer, ForeignKey("fornecedores.id"))
     quantidade = Column(Integer)
     status = Column(String, default="criado")
+
+    produto = relationship("Produto")
+    fornecedor = relationship("Fornecedor")
+    
