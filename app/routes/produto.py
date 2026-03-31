@@ -23,7 +23,7 @@ def criar_produto(produto: ProdutoCreate, db: Session = Depends(get_db)):
     return novo
 
 @router.get("/", response_model=list[ProdutoResponse])
-def listar(id_produto: int, db: Session = Depends(get_db)):
+def listar(db: Session = Depends(get_db)):
     return produto_service.listar_produtos(db)
 
 @router.delete("/")

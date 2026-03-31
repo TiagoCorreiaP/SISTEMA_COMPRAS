@@ -1,6 +1,7 @@
 from app import models
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
+from app.models.pedido import Pedido
 
 STATUS_PERMITIDOS = [
     "criado",
@@ -57,3 +58,9 @@ def criar_pedido(db, pedido):
 
 def listar_pedidos(db: Session):
     return db.query(models.Pedido).all()
+
+def deletar_pedido(db: Session, id):
+    pedido = db.query(Pedido).filter(Pedido.id == id).first()
+    db.delete(pedido)
+    db.commit()
+    return None

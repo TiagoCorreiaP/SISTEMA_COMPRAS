@@ -20,3 +20,7 @@ def criar(pedido: PedidoCreate, db: Session = Depends(get_db)):
 @router.get("/", response_model=list[PedidoResponse])
 def listar(db: Session = Depends(get_db)):
     return pedido_service.listar_pedidos(db)
+
+@router.delete("/deletar")
+def deletar(id, db: Session = Depends(get_db)):
+    return pedido_service.deletar_pedido(db, id)
