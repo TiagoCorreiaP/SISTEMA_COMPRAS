@@ -14,3 +14,5 @@ class ProdutoResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+        

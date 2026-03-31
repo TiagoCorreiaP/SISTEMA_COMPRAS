@@ -11,4 +11,5 @@ def criar_produto(db: Session, nome: str, descricao: str, preco:float):
 def listar_produtos(db: Session):
     return produto_repository.listar_produtos(db)
 
-
+def deletar_produto(db: Session, id):
+    return produto_repository.deletar_produto(db, id)
